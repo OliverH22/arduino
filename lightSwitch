@@ -1,0 +1,29 @@
+ int buttonPin = 7;     // the number of the pushbutton pin
+int ledPin =  13;      // the number of the LED pin
+
+int ledState = HIGH;
+
+int buttonCurrent;
+int buttonPrevious = LOW;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);      
+  pinMode(buttonPin, INPUT);    
+}
+
+void loop(){
+  
+  buttonCurrent = digitalRead(buttonPin);
+
+  if(buttonCurrent == HIGH && buttonPrevious == LOW){
+    if(ledState == HIGH){
+      ledState = LOW;
+    } else{
+      ledState = HIGH;
+    }
+  }
+
+  digitalWrite(ledPin, ledState);
+
+  buttonPrevious = buttonCurrent;
+}
